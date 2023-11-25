@@ -125,7 +125,7 @@ g1a <- ggplot(ss_beta_2023) +
                        breaks=seq(2018, 2039, by=2)) +
     scale_y_continuous("% Transmission rate", limits=c(-40, 5)) +
     scale_color_manual(values=c("orange", "black", "orange")) +
-    ggtitle("A. Assumption 1") +
+    ggtitle("A. Assumption 1\nBiennial epidemics, simple NPIs") +
     theme(
         legend.position = "none",
         panel.grid = element_blank(),
@@ -241,7 +241,7 @@ g4a <- ggplot(ss_2023) +
                        breaks=seq(2018, 2039, by=2)) +
     scale_y_continuous("% Transmission rate", limits=c(-40, 5)) +
     scale_color_manual(values=c("orange", "black", "orange")) +
-    ggtitle("D. Assumption 2") +
+    ggtitle("D. Assumption 2\nNon-biennial epidemics, realistic NPIs") +
     theme(
         legend.position = "none",
         panel.grid = element_blank(),
@@ -311,6 +311,7 @@ g5b <- ggplot(ss_2024) +
     )
 
 g6a <- ggplot(ss_2025) +
+    geom_rect(data=rects, aes(xmin=xmin, xmax=xmax, ymin=-Inf, ymax=Inf), alpha=0.05) +
     geom_vline(xintercept=2018:2039, col="gray", lty=2) +
     geom_hline(yintercept=0, lty=2) +
     geom_line(aes(time/52+2018, mobility), lwd=1) +
@@ -329,6 +330,7 @@ g6a <- ggplot(ss_2025) +
     )
 
 g6b <- ggplot(ss_2025) +
+    geom_rect(data=rects, aes(xmin=xmin, xmax=xmax, ymin=-Inf, ymax=Inf), alpha=0.05) +
     geom_vline(xintercept=2018:2039, col="gray", lty=2) +
     geom_line(aes(time/52+2018, S/2), lwd=1, col="purple") +
     geom_line(aes(time/52+2018, c(NA, diff(C))*fit_npi_mobility_omega_R0_S0_best$scale[1]), lwd=1) +

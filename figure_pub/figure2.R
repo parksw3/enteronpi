@@ -132,7 +132,7 @@ g3 <- ss2 %>%
         group=factor(group,
                      levels=c(TRUE, FALSE),
                      labels=c("2018-2022", "2023-")),
-        type="Assumption 1"
+        type="Assumption 1\nBiennial epidemics\nSimple NPIs"
     ) %>%
     filter(year >= 2018) %>%
     ggplot() +
@@ -233,7 +233,7 @@ g6 <- ss3 %>%
         group=factor(group,
                      levels=c(TRUE, FALSE),
                      labels=c("2018-2022", "2023-")),
-        type="Assumption 2"
+        type="Assumption 2\nNon-biennial epidemics\nRealistic NPIs"
     ) %>%
     ggplot() +
     geom_path(aes(S/1e6, I/1e6, col=group)) +
