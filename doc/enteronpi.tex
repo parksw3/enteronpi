@@ -120,8 +120,8 @@ Bryan T. Grenfell\textsuperscript{1,4}
 Recent outbreaks of enterovirus D68 (EV-D68) infections, and their causal linkage with acute flaccid myelitis (AFM), continue to pose a serious public health concern.
 During 2020 and 2021, the dynamics of EV-D68 and other pathogens have been significantly perturbed by non-pharmaceutical interventions against COVID-19; this perturbation presents a powerful natural experiment for exploring the dynamics of these endemic infections.
 In this study, we analyzed publicly available data on EV-D68 infections, originally collected through the New Vaccine Surveillance Network, to predict their short- and long-term dynamics following the COVID-19 interventions.
-Although there are large uncertainties in our predictions, the likelihood of a large outbreak in 2023 appears to be low.
-Comprehensive surveillance data are needed to narrow uncertainties in future dynamics of EV-D68.
+Although long-term predictions are sensitive to our assumptions about underlying dynamics and changes in contact rates during the NPI periods, the likelihood of a large outbreak in 2023 appears to be low.
+Comprehensive surveillance data are needed to accurately characterize future dynamics of EV-D68.
 The limited incidence of AFM cases in 2022, despite large EV-D68 outbreaks, poses further questions for the timing of the next AFM outbreaks.
 
 \pagebreak
@@ -137,7 +137,7 @@ Both these factors highlight the necessity to understand its past and future dyn
 
 Between 2014--2018, EV-D68 and AFM outbreaks were reported every two years in the US (with local variations) and in many other countries \citep{messacar2019continued};
 therefore, many anticipated an EV-D68 and AFM outbreak in 2020.
-In particular, our previous modeling analysis showed that state-level variation in EV-D68 dynamics in the US could be explained by variation in the basic reproduction number and seasonality and further predicted that an outbreak in 2020 would be likely across a wide range of parameter regimes \citep{park2021epidemiological}.
+In particular, our previous modeling analysis showed that state-level variation in EV-D68 dynamics in the US could be explained by variation in the basic reproduction number and seasonality; we further predicted that an outbreak in 2020 would be likely across a wide range of parameter regimes \citep{park2021epidemiological}.
 However, as COVID-19 emerged in early 2020, non-pharmaceutical interventions (NPIs) were introduced, thereby reducing contact rates and preventing the transmission of endemic diseases across the world.
 We also predicted that even a modest reduction in contact rates would prevent an EV-D68 outbreak in 2020 \citep{park2021epidemiological}.
 Analyses of other respiratory pathogens, such as RSV and influenza, further predicted that the accumulation of the susceptible pool during the NPI period would result in larger outbreaks when NPIs were relaxed \citep{baker2020impact}.
@@ -150,7 +150,7 @@ This raised questions about the predictions for future AFM outbreaks.
 
 In this study, we analyzed the spread of EV-D68 in the US between 2018 and 2022 using previously published data collected from the Centers for Disease Control and Prevention (CDC) New Vaccine Surveillance Network (NVSN) \citep{ma2022increase}.
 We extended the standard SIR model to account for changes in transmission rates caused by non-pharmaceutical interventions---we used this model to estimate underlying parameters and characterize the impact of non-pharmaceutical interventions on the future dynamic of EV-D68.
-We further performed a series of sensitivity analyses to capture the uncertainty in long-term predictions for future EV-D68 outbreaks in the US.
+We further performed a series of sensitivity analyses for long-term predictions for future EV-D68 outbreaks in the US.
 
 \section{Methods}
 
@@ -173,26 +173,26 @@ Instead, this incidence proxy would accurately capture the dynamics of infection
 The original method relied on ILI cases rather than ED visits; briefly, the four assumptions in the context of this study can be rephrased as follows:
 (1) the fraction of ARIs that result in ED visits stay constant;
 (2) the number of ED visits for all causes is consistent throughout the study period;
-(3) the surveillence network is representative of the full population;
+(3) the surveillance network is representative of the full population;
 (4) viral testing, if performed in a different system, is based on samples representative of the surveillance network.
-In practice, none of these assumptons are fully met, especially given COVID-19 disruptions in surveillance and hospital visits.
-The New Vaccine Surveillance Network also does not cover all 50 states, meaning that the surveillance data may not be fully representative of EV-D68 circulatons in the US.
+In practice, none of these assumptions are fully met, especially given COVID-19 disruptions in surveillance and hospital visits.
+The New Vaccine Surveillance Network also does not cover all 50 states, meaning that the surveillance data may not be fully representative of EV-D68 circulations in the US.
 Nonetheless, we take this proxy as the best available measure of EV-D68 incidence.
 To validate the robustness of this proxy, we also tried using the weekly proportions of influenza-like illness (ILI) visits, instead of ED visits  associated with ARIs, to calculate the incidence proxy.
 ILI data were downloaded from the Outpatient Influenza-like Illness Surveillance Network (ILINet).
-All data are presented in Supplementary Figure S1.
+All data are presented in Supplementary Figure S2.
 
 As a comparison, we considered the monthly EV-D68 positivity data collected through BioFire for the period 2014--2019.
 The data are publicly available from \cite{park2021epidemiological}.
 We did not have access to data for RV/EV positivity or ED visits during this period and so we were not able to calculate the incidence proxy.
 We excluded this data from model fitting for simplicity.
-Nonetheless, we present this data as a reference for EV-D68 dynamics prior to the introduction of NPIs and for visual comparision.
+Nonetheless, we present this data as a reference for EV-D68 dynamics prior to the introduction of NPIs and for visual comparison.
 
 To capture the dynamics of COVID-19 NPIs, we analyzed mobility data for the US collected from Google.
 Previous studies showed that using Google mobility measures can capture transmission reduction of other respiratory infections, including SARS-CoV-2 \citep{nouvellet2021reduction} and RSV \citep{krauer2022estimating}.
 Since only the most recent data are publicly available through Google (\url{https://www.google.com/covid19/mobility/}), we downloaded the mobility data from Our World in Data instead (\url{https://ourworldindata.org/covid-google-mobility-trends}).
 We calculated the weekly mean mobility across four categories: retail \& recreation, grocery \& pharmacy, transit stations, and workplaces.
-For simplicity, we focus on the national data and do not consier regional variation in mobility.
+For simplicity, we focus on the national data and do not consider regional variation in mobility.
 
 \subsection{Model}
 
@@ -244,18 +244,19 @@ This assumption reflects state-level variation in EV-D68 outbreaks (e.g., a lack
 In this case, we constrained the parameter space by modeling changes in $\delta$ based on Google mobility, capturing realistic changes in human behavior, and allowing other epidemiological parameters to vary.
 Below, we describe two assumptions in detail.
 
-\textbf{Assumption 1.} To capture the endemic biennial pattern of EV-D68, we assumed $\mathcal R_0 = 20$, $\theta=0.2$, and $\omega = 2$, which sits in a stable biennial regime.
-While $\mathcal R_0 = 20$ seems high, this is consistent with previous paramter estimates for EV-D68 and other EV serotypes that exhibit biennial epidemics \citep{pons2018serotype,park2021epidemiological};
+\textbf{Assumption 1 (Biennial epidemic, simple NPIs).} To capture the endemic biennial pattern of EV-D68, we assumed $\mathcal R_0 = 20$, $\theta=0.2$, and $\omega = 2$, which sits in a stable biennial regime.
+While $\mathcal R_0 = 20$ seems high, this is consistent with previous parameter estimates for EV-D68 and other EV serotypes that exhibit biennial epidemics \citep{pons2018serotype,park2021epidemiological};
 high seroprevalence against EV-D68 at young age further provide indirect support for high $\mathcal R_0$ \citep{livingston2022neutralizing}.
-By varying the parameter $\phi$ between 0.3 and 0.5 for each simulation, we ran the model for 24 years prior to 2018 starting from the initial conditions $S(0) = (1/\mathcal R_0)N$, $I(0) = 1$, and $R(0) = N - S(0) - I(0)$ such that the 25th year in the simulation corresponds to 2018.
+We first estimated the seasonal offset parameter $\phi$ by matching simulations to the 2018 outbreak.
+Specifically, for a given value of $\phi$, we we ran the model for 24 years prior to 2018 starting from the initial conditions $S(0) = (1/\mathcal R_0)N$, $I(0) = 1$, and $R(0) = N - S(0) - I(0)$ such that the 25th year in the simulation corresponds to 2018.
 We chose this time frame such that EV-D68 infections can reach a stable endemic cycle without being computationally too costly. We do not expect the number of pre-data years to affect the inference as long as a stable biennial cycle can be established before NPIs are introduced.
-Then, we tried to find a parameter set that maximized the likelihood assuming normally distributed errors:
+Then, we tried to find a the value of $\phi$ that maximized the likelihood assuming normally distributed errors:
 \begin{equation}
 \textrm{incidence proxy at time }t \sim \mathrm{Normal}(\rho \times i(t))
 \end{equation}
 where $\rho$ represents the scaling factor.
-For each value of $\phi$, we performed a linear regression between incidence proxy and the predicted incidence for 2018 without the intercept term, which allowed us to calculate the likelihood as well as the scaling factor (corresponding to the estimated coefficient).
-Since we only allow $\phi$ to vary in this set of simulations, we calculated the likelihood for every simulation by vaying $\phi$ between 0.3 and 0.5 at a 0.01 increment and found the value of $\phi$ that maximized the likelihood.
+The scaling factor $\rho$ was estimtaed by performing a linear regression between incidence proxy and the predicted incidence for 2018 without the intercept term, which allowed us to calculate the likelihood as well as the scaling factor (corresponding to the estimated coefficient).
+Since we were only estimating $\phi$ in this step, we calculated the likelihood for every value of $\phi$ between 0.3 and 0.5 at a 0.01 increment and found the value of $\phi$ that maximized the likelihood.
 
 Using the best matching offset term $\phi$, we further tried to estimate the changes in contact rates $\delta(t)$ that best matches the data.
 We initially explored whether a constant reduction in contact rate for a fixed amount of time alone can explain the observed dynamics:
@@ -267,7 +268,7 @@ We initially explored whether a constant reduction in contact rate for a fixed a
 \end{cases}
 \end{equation}
 where $\delta_1$ represents the amount of reduction in contact rates, and $\tsub{t}{npi}$ represents the duration of non-pharmaceutical interventions.
-During this investigation, we found that this simple functional form was not able to capture the observed dynamics sufficiently, and instead overestimated the size of the epidemic in 2022 (Supplementary Figure S2).
+During this investigation, we found that this simple functional form was not able to capture the observed dynamics sufficiently, and instead overestimated the size of the epidemic in 2022 (Supplementary Figure S3).
 Therefore, we instead assumed that contact rates were initially reduced by $\delta_1$ for 2 years and then by $\delta_2$:
 \begin{equation}
 \delta(t) = \begin{cases}
@@ -280,9 +281,11 @@ where we varied both $\delta_1$ and $\delta_2$ between 0.2 and 0.4.
 For each parameter set, we performed linear regression using the estimated incidence proxy as the response variable, and the predicted incidence multiplied by the scaling factor as an offset term without an intercept term---this allowed us to calculate the normal likelihood as before.
 For longer term predictions, we later explored further relaxing the impact of NPIs.
 
-\textbf{Assumption 2. } We allowed both $\mathcal R_0$ and $\omega$ to vary, meaning that we no longer assumed that EV-D68 was following a biennial pattern prior to 2018.
+\textbf{Assumption 2 (Non-biennial epidemic, realistic NPIs).}
+We allowed both $\mathcal R_0$ and $\omega$ to vary, meaning that we no longer assumed that EV-D68 was following a biennial pattern prior to 2018.
 Given large geographical heterogeneity in previous EV-D68 dynamics and the underlying epidemiological parameters, we wanted to explore all possible parameter spaces and consider the possibility that EV-D68 did not follow a biennial pattern.
-For simplicity, we still fixed $\theta$ and $\phi$ to the same values as the first set of assumptions.
+For simplicity, we still fixed $\theta$ and $\phi$ to the same values as the first set of assumptions;
+as shown previously, changing $\mathcal R_0$ alone can generate a diverse range of multiannual cycles \citep{earn2000simple,park2021epidemiological}.
 In this case, we assumed that the changes in contact rates corresponds to the shape of mean Google mobility, which allowed us to simulate realistic NPI effects.
 Since Google mobility stopped being updated as of October 15, 2022, we assumed that the mean mobility after this period stayed constant based on the last observed value.
 Since we were no longer assuming a biennial epidemic, we began our simulations from 2018 and also allowed the initial proportion susceptible $S(0)$ to vary across simulations; we fixed $I(0) = 1$ throughout for simplicity.
@@ -311,8 +314,9 @@ The data are publicly available from \url{https://ourworldindata.org/covid-googl
 Prior to 2020, circulations of enterovirus D68 exhibited predominantly biennial patterns in the US (\fref{fig1}A) and in other countries.
 Based on this data, we previously predicted a possibility of a large outbreak in 2020, following the biennial pattern, and further showed that the decreased contact rates due to NPIs for the COVID-19 pandemic could, as observed, prevent this EV-D68 outbreak \citep{park2021epidemiological}.
 The estimated incidence proxy from the NVSN data \citep{ma2022increase} confirms our prediction: there were limited cases during 2020 followed by a large outbreak in 2022.
-Using the ILI time series also gave similar incidence proxy estimates (Supplementary Figure S1).
+Using the ILI time series also gave similar incidence proxy estimates (Supplementary Figure S2).
 Interestingly, we found signatures of continued reduction in mobility throughout 2022 (\fref{fig1}B), which likely affected the dynamics of EV-D68 and further contributed to delaying the timing of its resurgence.
+In contrast, the AFM incidence remined low in 2022 with only 47 reported cases (vs 120 cases in 2014, 153 cases in 2016, and 238 cases in 2018; Supplementary Figure S1).
 
 \begin{figure}[!th]
 \includegraphics[width=\textwidth]{../figure_pub/figure2.pdf}
@@ -320,7 +324,7 @@ Interestingly, we found signatures of continued reduction in mobility throughout
 \textbf{Model fits and long-term predictions under two different assumptions.}
 (A,D) Fits of the SIR model (black lines) to incidence proxy (black points).
 Purple lines represent the corresponding susceptible dynamics.
-(B,E) Longer term predictions assuming a continued reduction in contact rates, which is modeled by either by fixing $\delta_2$ (assumption 1) or continuing the google mobility pattern (assumption 2).
+(B,E) Longer term predictions assuming a continued reduction in contact rates, which is modeled by either by fixing $\delta_2$ (assumption 1) or continuing the Google mobility pattern (assumption 2).
 (C,F) Phase diagram of prevalence of infection ($I/N$) against the proportion susceptible ($S/N$).
 }
 \label{fig:fig2}
@@ -331,19 +335,19 @@ In this case, the model predicts a slightly larger outbreak for 2022 than for 20
 Consistent with the initial stable biennial assumption, the model predicts a return to stable biennial epidemic under a constant reduction in contact rates after 2022 (\fref{fig2}B);
 the model also predicts an increase in the overall susceptibility compared to pre-pandemic periods (\fref{fig2}C).
 
-The likelihood surface shows a strong correlation in two parameters (i.e., the amount of reduction in transmission in 2020--2021 vs 2022; Supplementary Figure S3), meaning that many other parameter combinations can give similar fits.
+The likelihood surface shows a strong correlation in two parameters (i.e., the amount of reduction in transmission in 2020--2021 vs 2022; Supplementary Figure S4), meaning that many other parameter combinations can give similar fits.
 For example, a 40\% reduction followed by a 27\% reduction gives a very similar fit with $<2$ differences in log-likelihood units.
-In Supplementary Figure S4, we present all model fits within 2 log-likelihood units compared to the best fit;
+In Supplementary Figure S5, we present all model fits within 2 log-likelihood units compared to the best fit;
 all of these model fits predict a return to stable biennial epidemic.
-Further constraining paramter uncertainties would require detailed data on age-specific contact rates.
+Further constraining parameter uncertainties would require detailed data on age-specific contact rates.
 We were not able to find data on contact rates for age groups that are relevant to EV-D68 infections in the US (median of 2.9 vs 2.6 years for the 2018 and 2022 outbreak, respectively \citep{shah2021enterovirus,ma2022increase}).
 
-Under the second set of assumptions (realistic changes in contact rates), we estimated $\mathcal R_0 =17.5$ and $\omega = 0.1$ best captures the observed dynamics (\fref{fig2}D; Supplementary Figure S5).
+Under the second set of assumptions (realistic changes in contact rates), we estimated $\mathcal R_0 =17.5$ and $\omega = 0.1$ best captures the observed dynamics (\fref{fig2}D; Supplementary Figure S6).
 In this case, the model predicts a slightly larger outbreak for 2018 than for 2022.
 Assuming a constant reduction in contact rates after 2022, the model predicts more complex longer-term oscillatory dynamics (\fref{fig2}E, \fref{fig2}F).
 
 Two sets of assumptions gave similar log-likelihood estimates: -943.7 and -943.3, respectively.
-QQ plots further indicated similarities in both fits (Supplementary Figure S6).
+QQ plots further indicated similarities in both fits (Supplementary Figure S7).
 QQ plots indicated some deviation from the normal distribution towards the end of the quantiles;
 these discrepancies were likely driven by systematic differences in the model predictions and data (e.g., underestimation of the 2018 peak for the assumption 1 and overestimation of 2022 peak for the assumption 2).
 On the other hand, there was a considerable differences in the estimates of scaling parameter: 18.7 and 10.4, respectively.
@@ -376,28 +380,28 @@ For example, when we assumed that the contact rates returned to normal by 2025, 
 
 In this study, we investigated the impact of COVID-19 NPIs on current and future dynamics of EV-D68 in the US.
 Using published data from NVSN, we reconstructed an incidence proxy for EV-D68 infections and fitted the SIR model to the incidence proxy under two different assumptions about the underlying dynamics and the shape of NPIs.
-For the first set of simulations, we assumed an underlying biennial epidemic and tried to estimate the shape of simple NPIs that would explain the observed dynamics.
-For the second set of simulations, we allowed the underlying dynamics to deviate from the biennial epidemic but instead modeled the effects of NPIs using Google mobility measures.
-We found that the observed dynamics can be explained under both sets of assumptions, but they predict markedly different long-term dynamics.
-Both sets of simulations agree in predicting the absence of large outbreak for late 2023 in most scenarios.
+For model fits based on the first set of assumptions, we assumed an underlying biennial epidemic and tried to estimate the shape of simple NPIs that would explain the observed dynamics.
+For model fits based on the second set of assumptions, we allowed the underlying dynamics to deviate from the biennial epidemic but instead modeled the effects of NPIs using Google mobility measures.
+We found that the observed dynamics can be explained under both sets of assumptions, but they predict markedly different long-term dynamics (\fref{fig2}).
+Nonetheless, forward simulations based on both sets of assumptions agree in predicting the absence of large outbreak for late 2023 in most scenarios (\fref{fig3}).
 This prediction follows intuitively from susceptible depletion following the large outbreak EV-D68 across the US.
 However, the potential cannot be fully ruled out:
 in particular, if the size of the EV-D68 outbreak in 2022 was offset by a moderate reduction in contact rates, thereby preventing a significant susceptible depletion, a sudden increase in contact between 2022 and 2023 can still cause an outbreak in 2023.
-Serological surveys would help reduce uncertainties in both data and model predictions \citep{nguyen2022enterovirus}.
+Serological surveys would allow accurate comparisons of past outbreaks and further constrain future predictions \citep{nguyen2022enterovirus}.
 
-The two sets of assumptions that we considered represent different extremes.
+We considered two different sets of assumptions to capture the observed dynamics of EV-D68.
 The first captures the biennial patterns of EV-D68 outbreaks but makes simplifying assumptions about the impact of NPIs.
 The second set of assumptions captures realistic changes in contact rates but does not account for the dynamics before 2018.
-Given geographical heterogeneity in EV-D68 dynamics before 2018 and uncertanties in the exact changes in contact rates after the emergence of COVID-19, it is difficult to assess which assumptions are more realistic.
+Given geographical heterogeneity in EV-D68 dynamics before 2018 and uncertainties in the exact changes in contact rates after the emergence of COVID-19, it is difficult to assess which assumptions are more realistic.
 We tried combining a biennial pattern with realistic NPIs but such a combination gave significantly worse fits than two other assumptions.
-Specifically, we tried to further relax the assumptions about realistic NPIs by modeling the changes in contact rates as a product of the mean Google mobility and a constant value, but the model consistently overestimated the size of 2021 outbreak and predicted a late outbreak for 2022 (see Supplementary Figure S7 for the fit).
+Specifically, we tried to further relax the assumptions about realistic NPIs by modeling the changes in contact rates as a product of the mean Google mobility and a constant value, but the model consistently overestimated the size of 2021 outbreak and predicted a late outbreak for 2022 (see Supplementary Figure S8 for the fit).
 Accounting for geographical heterogeneity in EV-D68 circulations and behavioral changes will be critical to making more accurate inferences and predictions;
 such efforts would require us to fit our model at a finer geographical scale.
 Overall, more detailed surveillance is required to better understand both short- and long-term dynamics of EV-D68.
 
 There are many limitations to our analysis.
-First of all, surveillance efforts for EV-D68 are currently limited in the US, adding large uncertainties to its observed dynamics.
-Even though EV-D68 is thought to have circulated every two years before 2020, earlier analysis revealed large geographical heterogeneity in its patterns of spread.
+First of all, surveillance efforts for EV-D68 are currently limited in the US.
+Even though EV-D68 is thought to have circulated every two years before 2020, earlier analysis revealed large geographical heterogeneity in its patterns of spread \citep{park2021epidemiological}.
 Therefore, our estimated incidence proxy for the US provides a crude view of the overall dynamics and does not capture any geographical heterogeneity that may be present.
 Second, we did not have access to the raw data and so we manually digitized the data.
 This procedure likely added inaccuracies to the data (though this is likely not a major error).
@@ -408,11 +412,11 @@ There are considerable uncertainties in model parameters that we did not conside
 Instead, we assumed that many parameters were known prior to model fits.
 Nonetheless, our analysis already demonstrates that a wide range of scenarios are consistent with the observed dynamics, and
 these scenarios give vastly different predictions.
-Further exploring parameter spaces would provide a broader overview of potential epidemic trajectories, but our qualitative conclusion about the uncertainties around future dynamics would not change.
+Further exploring parameter spaces would provide a broader overview of potential epidemic trajectories, but our qualitative conclusion about the discrepant predictions around future dynamics across different assumptions would not change.
 
 We modeled changes in EV-D68 transmission rates during the pandemic period using Google mobility, but there are many limitations to this approach.
 Most importantly, Google mobility captures the behavior of mobile phone users (older age groups), whereas EV-D68 primarily infects considerably young children (3--4 years).
-In other words, Google mobility would be a poor proxy for EV-D68 transmisison if there are systematic differences in contact patterns between younger and older age groups.
+In other words, Google mobility would be a poor proxy for EV-D68 transmission if there are systematic differences in contact patterns between younger and older age groups.
 Using national mobility further neglects geographical heterogeneity in EV-D68 dynamics and surveillance efforts.
 Age- and region-specific data are needed to better understand the changes in EV-D68 transmission during the NPI periods.
 
@@ -438,6 +442,16 @@ We thank the New Vaccine Surveillance Network (NVSN) for generating, and providi
 \section*{Supplementary Materials}
 \setcounter{figure}{0}
 \renewcommand{\thefigure}{S\arabic{figure}}
+
+\begin{figure}[!th]
+\includegraphics[width=\textwidth]{../figure_pub/figure_afm.pdf}
+\caption{
+\textbf{Monthly time series of AFM cases in the US.}
+The data are publicly available from \url{https://www.cdc.gov/acute-flaccid-myelitis/cases-in-us.html\#cases-by-month}.
+}
+\end{figure}
+
+\pagebreak
 
 \begin{figure}[!th]
 \includegraphics[width=\textwidth]{../figure_pub/figure_data_processed_d68.pdf}
